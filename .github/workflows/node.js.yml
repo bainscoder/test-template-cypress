@@ -1,0 +1,21 @@
+name: Cypress automation
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3.1.0
+      
+    - name: Cypress execution
+      uses: cypress-io/github-action@v4.2.0
+      with:
+        command: npx cypress run --browser chrome
